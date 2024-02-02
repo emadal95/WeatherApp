@@ -1,2 +1,0 @@
-# WeatherApp
-Flutter Development Exercise
