@@ -6,11 +6,13 @@ class CurrentWeather extends WeatherPrediction {
   final Temperature? apparentTemperature;
   final double? windSpeed;
   final double? humidityPercent;
+  final bool isDay;
 
   CurrentWeather({
     this.apparentTemperature,
     this.windSpeed,
     this.humidityPercent,
+    this.isDay = true,
     double? precipitation,
     Temperature? temperature,
     int? weatherCode,
@@ -21,6 +23,16 @@ class CurrentWeather extends WeatherPrediction {
           weatherCode: weatherCode,
           precipitation: precipitation,
         );
+
+  String humidityPercentLabel() {
+    if (humidityPercent == null) return '';
+    return '$humidityPercent%';
+  }
+
+  String windSpeedLabel() {
+    if (windSpeed == null) return '';
+    return '${windSpeed!.toStringAsFixed(0)} km/h';
+  }
 
   @override
   List<Object?> get props => [
@@ -36,6 +48,7 @@ class CurrentWeather extends WeatherPrediction {
   ) {
     return CurrentWeather(
       date: DateTimeX.fromWeatherService(data['time']),
+      isDay: (data['is_day'] as int? ?? 1) == 1 ? true : false,
       apparentTemperature: Temperature.parse(
         data['apparent_temperature'] as double?,
         units['apparent_temperature'] as String?,
