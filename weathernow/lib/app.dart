@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         ],
         theme: ThemeData(),
         darkTheme: ThemeData.dark(),
+        debugShowCheckedModeBanner: false,
         themeMode: widget.settingsController.themeMode,
         onGenerateRoute: (RouteSettings routeSettings) {
           return MaterialPageRoute<void>(
