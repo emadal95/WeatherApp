@@ -1,0 +1,1 @@
+const OK_STATUS_CODES = [200, 201, 202];
