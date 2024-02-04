@@ -119,8 +119,8 @@ class _LocationDetailsState extends State<LocationDetails> {
               children: [
                 currentTemperature(),
                 currentConditions(),
-                row(children: [precipitations(), feelsLike()]),
-                row(children: [currentHumidity(), windSpeed()]),
+                row(children: [feelsLike(), currentHumidity()]),
+                row(children: [windSpeed(), precipitations()]),
               ],
             ),
           ),
