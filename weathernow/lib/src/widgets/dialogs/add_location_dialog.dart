@@ -14,11 +14,12 @@ class _AddLocationDialogState extends State<AddLocationDialog> {
   Size? deviceSize;
 
   void onLocationPicked(LocationResult result) {
+    List<String> parts = result.address.split(',');
     Navigator.of(context).pop(
       LabeledLocationData.fromMap({
         'longitude': result.longitude,
         'latitude': result.latitude,
-        'label': result.address.split(',').last.normalize(),
+        'label': parts.elementAtOrNull(parts.length - 2)?.normalize() ?? '',
       }),
     );
   }
