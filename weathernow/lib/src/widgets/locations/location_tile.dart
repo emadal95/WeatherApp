@@ -46,7 +46,7 @@ class _LocationListTileState extends State<LocationListTile> {
   }
 
   Widget forecastIcon() {
-    double size = MediaQuery.of(context).size.width * 0.1;
+    double size = 60;
     return Container(
       height: size,
       width: size,
@@ -55,8 +55,11 @@ class _LocationListTileState extends State<LocationListTile> {
         color: animationBackgrounColor,
       ),
       child: prediction != null
-          ? SvgPicture.asset(
-              prediction!.weatherIcon,
+          ? Transform.scale(
+              scale: 1.2,
+              child: SvgPicture.asset(
+                prediction!.weatherIcon,
+              ),
             )
           : null,
     );
