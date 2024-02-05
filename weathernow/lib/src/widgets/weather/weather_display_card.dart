@@ -6,6 +6,7 @@ class WeatherDisplayCard extends StatelessWidget {
   bool chipShape;
   double minHeight;
   double minWidth;
+  Widget? leading;
   String? title;
   String? subtitle;
 
@@ -18,6 +19,7 @@ class WeatherDisplayCard extends StatelessWidget {
     this.minWidth = 150,
     this.title,
     this.subtitle,
+    this.leading,
   }) : super(key: key);
 
   Widget text(String txt, double size) => FittedBox(
@@ -31,6 +33,20 @@ class WeatherDisplayCard extends StatelessWidget {
           ),
         ),
       );
+
+  Widget titleWidget() => text(title!, fontSize * 0.5);
+  Widget subtitleWidget() => text(subtitle!, fontSize * 0.5);
+  Widget valueWidget() {
+    if (leading == null) return text(value, fontSize);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        leading!,
+        text(value, fontSize),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +72,9 @@ class WeatherDisplayCard extends StatelessWidget {
           crossAxisAlignment:
               chipShape ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
-            if (title != null) text(title!, fontSize * 0.5),
-            text(value, fontSize),
-            if (subtitle != null) text(subtitle!, fontSize * 0.5),
+            if (title != null) titleWidget(),
+            valueWidget(),
+            if (subtitle != null) subtitleWidget(),
           ],
         ),
       ),

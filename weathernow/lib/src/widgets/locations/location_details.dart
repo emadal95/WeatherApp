@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:weathernow/src/data/settings/settings_controller.dart';
@@ -56,6 +57,17 @@ class _LocationDetailsState extends State<LocationDetails> {
   Widget currentConditions() {
     return WeatherDisplayCard(
       data!.currentWeather.getWeatherCodeLabel(),
+      leading: Container(
+        height: 24,
+        width: 24,
+        margin: const EdgeInsets.only(right: 6),
+        child: Transform.scale(
+          scale: 2,
+          child: SvgPicture.asset(
+            data!.currentWeather.weatherIcon,
+          ),
+        ),
+      ),
       chipShape: true,
       minHeight: 10,
       fontSize: 20,
