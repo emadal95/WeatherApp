@@ -90,11 +90,11 @@ const WeatherAnimations = {
     'svg': iconCloudy,
   },
   WeatherScene.rainyOvercast: {
-    'codes': [3, 51, 61, 63, 80, 81],
+    'codes': [3, 51, 53, 55, 61, 63, 80, 81],
     'svg': iconRainy,
   },
   WeatherScene.stormy: {
-    'codes': [53, 55, 65, 82, 95, 96, 99],
+    'codes': [65, 82, 95, 96, 99],
     'svg': iconStorm,
   },
   WeatherScene.showerSleet: {

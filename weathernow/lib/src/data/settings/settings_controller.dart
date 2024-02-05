@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:weathernow/src/models/temperature.dart';
 import 'package:weathernow/src/models/labeled_location_data.dart';
 import 'package:weathernow/src/utils/extensions.dart';
@@ -49,5 +48,11 @@ class SettingsController extends ChangeNotifier {
     _locations.insert(0, newLoc);
     notifyListeners();
     await _settingsService.addLocation(newLoc);
+  }
+
+  Future<void> removeLocation(String id) async {
+    _locations.removeWhere((loc) => loc.label.normalize() == id.normalize());
+    notifyListeners();
+    await _settingsService.removeLocation(id);
   }
 }

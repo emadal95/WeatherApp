@@ -6,6 +6,7 @@ import 'package:weathernow/src/data/shared_preferences/preferences_const.dart';
 import 'package:weathernow/src/data/shared_preferences/preferences_controller.dart';
 import 'package:weathernow/src/models/temperature.dart';
 import 'package:weathernow/src/models/labeled_location_data.dart';
+import 'package:weathernow/src/utils/extensions.dart';
 
 class SettingsService {
   Future<TemperatureUnit> get unit async {
@@ -78,6 +79,23 @@ class SettingsService {
             ) ??
             [];
     locations.insert(0, json.encode(loc.toMap()));
+    await PreferencesController.savePreference(
+      PreferenceKey.locations,
+      locations,
+    );
+  }
+
+  Future<void> removeLocation(String id) async {
+    List<String> locations =
+        await PreferencesController.getPreference<List<String>>(
+              PreferenceKey.locations,
+            ) ??
+            [];
+    locations.removeWhere(
+      (l) =>
+          LabeledLocationData.fromMap(json.decode(l)).label.normalize() ==
+          id.normalize(),
+    );
     await PreferencesController.savePreference(
       PreferenceKey.locations,
       locations,

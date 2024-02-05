@@ -4,10 +4,12 @@ class LocationTileData {
   int index;
   String label;
   LabeledLocationData? location;
+  bool allowDeletion;
 
   LocationTileData({
     required this.index,
     required this.label,
     required this.location,
+    this.allowDeletion = true,
   });
 }

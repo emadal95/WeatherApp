@@ -41,6 +41,10 @@ class _LocationListTileState extends State<LocationListTile> {
     );
   }
 
+  void onDelete() async {
+    if (loc != null) settings!.removeLocation(loc!.label);
+  }
+
   Widget forecastIcon() {
     double size = MediaQuery.of(context).size.width * 0.1;
     return Container(
@@ -58,6 +62,16 @@ class _LocationListTileState extends State<LocationListTile> {
     );
   }
 
+  Widget deleteButton() {
+    return IconButton(
+      onPressed: onDelete,
+      icon: const Icon(
+        Icons.delete,
+        color: Colors.red,
+      ),
+    );
+  }
+
   WeatherPrediction? get prediction => provider!.getLocationPrediction(loc);
 
   @override
@@ -69,6 +83,7 @@ class _LocationListTileState extends State<LocationListTile> {
     return ListTile(
       onTap: openLocationWeather,
       leading: forecastIcon(),
+      trailing: widget.data.allowDeletion ? deleteButton() : null,
       title: Text(
         widget.data.label.startCase(),
         style: const TextStyle(inherit: true, fontWeight: FontWeight.bold),

@@ -31,6 +31,7 @@ class _LocationsListState extends State<LocationsList> {
     LocationTileData currentLocation = LocationTileData(
       index: 0,
       label: myLocationLabel,
+      allowDeletion: false,
       // null location will automatically have the details page fetch current user location:
       location: null,
     );
