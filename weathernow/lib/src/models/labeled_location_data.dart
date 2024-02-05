@@ -1,4 +1,5 @@
 import 'package:location/location.dart';
+import 'package:weathernow/src/utils/extensions.dart';
 
 class LabeledLocationData {
   double latitude;
@@ -9,7 +10,11 @@ class LabeledLocationData {
     required this.label,
     required this.latitude,
     required this.longitude,
-  });
+  }) {
+    if (label.normalize().isEmpty) {
+      label = '${latitude.toStringAsFixed(2)},${longitude.toStringAsFixed(2)}';
+    }
+  }
 
   Map<String, dynamic> toMap() {
     return Map.from({

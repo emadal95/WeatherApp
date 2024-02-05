@@ -45,54 +45,54 @@ class _MyAppState extends State<MyApp> {
           create: (BuildContext _) => settingsController,
         ),
       ],
-      child: FutureBuilder(
-          future: settingsFuture,
-          builder: (_, snapshot) {
-            if (snapshot.connectionState != ConnectionState.done) {
-              return const SplashScreen();
-            }
+      child: ListenableBuilder(
+        listenable: settingsController,
+        builder: (_, __) => FutureBuilder(
+            future: settingsFuture,
+            builder: (_, snapshot) {
+              if (snapshot.connectionState != ConnectionState.done) {
+                return const SplashScreen();
+              }
 
-            return MaterialApp(
-              restorationScopeId: 'app',
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('en', ''), // English
-              ],
-              theme: ThemeData(),
-              darkTheme: ThemeData.dark(),
-              debugShowCheckedModeBanner: false,
-              themeMode: settingsController.themeMode,
-              onGenerateRoute: (RouteSettings routeSettings) {
-                return MaterialPageRoute<void>(
-                  settings: routeSettings,
-                  builder: (BuildContext context) {
-                    switch (routeSettings.name) {
-                      case SettingsView.routeName:
-                        return SettingsView(controller: settingsController);
-                      case LocationsList.routeName:
-                        return ListenableBuilder(
-                          listenable: settingsController,
-                          builder: (_, __) => LocationsList(
+              return MaterialApp(
+                restorationScopeId: 'app',
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: const [
+                  Locale('en', ''), // English
+                ],
+                theme: ThemeData(),
+                darkTheme: ThemeData.dark(),
+                debugShowCheckedModeBanner: false,
+                themeMode: settingsController.themeMode,
+                onGenerateRoute: (RouteSettings routeSettings) {
+                  return MaterialPageRoute<void>(
+                    settings: routeSettings,
+                    builder: (BuildContext context) {
+                      switch (routeSettings.name) {
+                        case SettingsView.routeName:
+                          return SettingsView();
+                        case LocationsList.routeName:
+                          return LocationsList(
                             settingsController: settingsController,
-                          ),
-                        );
-                      case LocationDetails.routeName:
-                      default:
-                        return LocationDetails(
-                          settingsController: settingsController,
-                          location:
-                              routeSettings.arguments as LabeledLocationData?,
-                        );
-                    }
-                  },
-                );
-              },
-            );
-          }),
+                          );
+                        case LocationDetails.routeName:
+                        default:
+                          return LocationDetails(
+                            settingsController: settingsController,
+                            location:
+                                routeSettings.arguments as LabeledLocationData?,
+                          );
+                      }
+                    },
+                  );
+                },
+              );
+            }),
+      ),
     );
   }
 }

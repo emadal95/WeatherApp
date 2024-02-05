@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:weathernow/src/widgets/settings/theme_settings.dart';
+import 'package:weathernow/src/widgets/settings/unit_settings.dart';
 
-import '../../data/settings/settings_controller.dart';
-
-class SettingsView extends StatelessWidget {
-  const SettingsView({super.key, required this.controller});
-
+class SettingsView extends StatefulWidget {
   static const routeName = '/settings';
+  SettingsView({super.key});
 
-  final SettingsController controller;
+  @override
+  State<SettingsView> createState() => _SettingsViewState();
+}
 
+class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: DropdownButton<ThemeMode>(
-          value: controller.themeMode,
-          onChanged: controller.updateThemeMode,
-          items: const [
-            DropdownMenuItem(
-              value: ThemeMode.system,
-              child: Text('System Theme'),
-            ),
-            DropdownMenuItem(
-              value: ThemeMode.light,
-              child: Text('Light Theme'),
-            ),
-            DropdownMenuItem(
-              value: ThemeMode.dark,
-              child: Text('Dark Theme'),
-            )
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          UnitSettings(),
+          ThemeSettings(),
+        ],
       ),
     );
   }

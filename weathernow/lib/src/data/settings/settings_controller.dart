@@ -23,7 +23,8 @@ class SettingsController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateUnit(TemperatureUnit newUnit) async {
+  Future<void> updateUnit(TemperatureUnit? newUnit) async {
+    if (newUnit == null) return;
     _unit = newUnit;
     notifyListeners();
     await _settingsService.updateUnit(newUnit);
