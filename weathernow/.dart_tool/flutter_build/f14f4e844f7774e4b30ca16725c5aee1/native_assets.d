@@ -1,1 +1,0 @@
- /Users/emanueledalessandro/development/WeatherApp/weathernow/.dart_tool/flutter_build/f14f4e844f7774e4b30ca16725c5aee1/native_assets.yaml: 
