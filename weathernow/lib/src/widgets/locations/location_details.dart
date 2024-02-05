@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:weathernow/src/data/settings/settings_controller.dart';
 import 'package:weathernow/src/data/weather_service/weather_controller.dart';
@@ -123,7 +122,12 @@ class _LocationDetailsState extends State<LocationDetails> {
           Positioned(
             top: 0,
             left: 24,
-            child: SafeArea(child: BackButton(onPressed: onBack)),
+            child: SafeArea(
+              child: BackButton(
+                onPressed: onBack,
+                color: Theme.of(context).cardColor,
+              ),
+            ),
           ),
           Positioned(
             top: mediaQuery.size.height * 0.15,
