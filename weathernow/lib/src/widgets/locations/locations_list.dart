@@ -1,52 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:weathernow/src/data/settings/settings_controller.dart';
-import 'package:weathernow/src/widgets/locations/location_details.dart';
-import '../settings/settings_view.dart';
+import 'package:weathernow/src/models/location_tile_data.dart';
+import 'package:weathernow/src/utils/constants.dart';
+import 'package:weathernow/src/utils/extensions.dart';
+import 'package:weathernow/src/widgets/locations/location_tile.dart';
+import 'package:weathernow/src/widgets/locations/locations_appbar.dart';
 
-class LocationsList extends StatelessWidget {
+class LocationsList extends StatefulWidget {
+  static const routeName = '/list';
   SettingsController settingsController;
 
   LocationsList({
     super.key,
     required this.settingsController,
-    this.items = const [1, 2, 3],
   });
 
-  static const routeName = '/list';
-  final List<int> items;
+  @override
+  State<LocationsList> createState() => _LocationsListState();
+}
+
+class _LocationsListState extends State<LocationsList> {
+  Widget locationListItem(LocationTileData data) {
+    return LocationListTile(
+      data,
+      key: Key('${data.index}'),
+    );
+  }
+
+  List<LocationTileData> get locations {
+    LocationTileData currentLocation = LocationTileData(
+      index: 0,
+      label: myLocationLabel,
+      // null location will automatically have the details page fetch current user location:
+      location: null,
+    );
+    List<LocationTileData> userLocations = widget.settingsController.locations
+        .mapIndexed(
+          (loc, i) => LocationTileData(
+            index: i + 1,
+            label: loc.label,
+            location: loc,
+          ),
+        )
+        .toList();
+
+    return [currentLocation, ...userLocations];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sample Items'),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
-            },
-          ),
-        ],
-      ),
+      appBar: LocationsAppBar(settingsController: widget.settingsController),
       body: ListView.builder(
         restorationId: 'LocationsList',
-        itemCount: items.length,
-        itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
-          return ListTile(
-              title: Text('SampleItem $item'),
-              leading: const CircleAvatar(
-                foregroundImage: AssetImage('assets/images/flutter_logo.png'),
-              ),
-              onTap: () {
-                Navigator.restorablePushNamed(
-                  context,
-                  LocationDetails.routeName,
-                );
-              });
-        },
+        itemCount: locations.length,
+        itemBuilder: (BuildContext context, int index) => locationListItem(
+          locations[index],
+        ),
       ),
     );
   }

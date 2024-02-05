@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:weathernow/src/data/shared_preferences/preferences_const.dart';
 import 'package:weathernow/src/data/shared_preferences/preferences_controller.dart';
 import 'package:weathernow/src/models/temperature.dart';
+import 'package:weathernow/src/models/labeled_location_data.dart';
 
 class SettingsService {
   Future<TemperatureUnit> get unit async {
@@ -17,6 +21,20 @@ class SettingsService {
     }
 
     return TemperatureUnit.fahrenheit;
+  }
+
+  Future<List<LabeledLocationData>> get locations async {
+    List<String>? prefferedLocs =
+        await PreferencesController.getPreference<List<String>>(
+      PreferenceKey.locations,
+    );
+
+    if (prefferedLocs == null) return [];
+
+    return prefferedLocs.map((locData) {
+      Map<String, dynamic> decoded = json.decode(locData);
+      return LabeledLocationData.fromMap(decoded);
+    }).toList();
   }
 
   Future<ThemeMode> get themeMode async {
@@ -50,6 +68,19 @@ class SettingsService {
     await PreferencesController.savePreference(
       PreferenceKey.theme,
       theme.name,
+    );
+  }
+
+  Future<void> addLocation(LabeledLocationData loc) async {
+    List<String> locations =
+        await PreferencesController.getPreference<List<String>>(
+              PreferenceKey.locations,
+            ) ??
+            [];
+    locations.insert(0, json.encode(loc.toMap()));
+    await PreferencesController.savePreference(
+      PreferenceKey.locations,
+      locations,
     );
   }
 }

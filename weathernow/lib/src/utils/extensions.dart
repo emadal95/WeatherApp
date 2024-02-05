@@ -35,3 +35,19 @@ extension DateTimeX on DateTime {
     );
   }
 }
+
+extension StringX on String {
+  String normalize() {
+    return trim().toLowerCase();
+  }
+
+  String startCase() {
+    List<String> words = split(' ');
+
+    return words
+        .map((w) => w.length < 2
+            ? w.toUpperCase()
+            : '${w[0].toUpperCase()}${w.substring(1).toLowerCase()}')
+        .join(' ');
+  }
+}

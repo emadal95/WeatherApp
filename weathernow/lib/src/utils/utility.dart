@@ -1,7 +1,9 @@
 import 'package:location/location.dart';
+import 'package:weathernow/src/models/labeled_location_data.dart';
+import 'package:weathernow/src/utils/constants.dart';
 
 class Utils {
-  static Future<LocationData?> getDeviceLocation() async {
+  static Future<LabeledLocationData?> getDeviceLocation() async {
     Location location = Location();
     bool serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
@@ -19,6 +21,9 @@ class Utils {
       }
     }
 
-    return await location.getLocation();
+    return LabeledLocationData.fromLocationData(
+      await location.getLocation(),
+      myLocationLabel,
+    );
   }
 }

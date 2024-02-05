@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:weather_animation/weather_animation.dart';
 import 'package:weathernow/src/models/temperature.dart';
+import 'package:weathernow/src/utils/constants.dart';
+import 'package:weathernow/src/utils/extensions.dart';
 
 class WeatherPrediction with EquatableMixin {
   final DateTime? date;
@@ -35,45 +37,15 @@ class WeatherPrediction with EquatableMixin {
   @override
   List<Object?> get props => [date, weatherCode, temperature, precipitation];
 
-  WeatherScene get weatherScene {
-    switch (weatherCode) {
-      case 0:
-      case 1:
-        return WeatherScene.scorchingSun;
-      case 2:
-      case 45:
-      case 48:
-        return WeatherScene.sunset;
-      case 3:
-      case 51:
-      case 61:
-      case 63:
-      case 80:
-      case 81:
-        return WeatherScene.rainyOvercast;
-      case 53:
-      case 55:
-      case 65:
-      case 82:
-      case 95:
-      case 96:
-      case 99:
-        return WeatherScene.stormy;
-      case 56:
-      case 57:
-      case 66:
-      case 67:
-        return WeatherScene.showerSleet;
-      case 71:
-      case 73:
-      case 75:
-      case 77:
-      case 85:
-      case 86:
-        return WeatherScene.snowfall;
-    }
+  String get weatherIcon {
+    return WeatherAnimations[weatherScene]?['svg'] as String? ?? iconClear;
+  }
 
-    return WeatherScene.weatherEvery;
+  WeatherScene get weatherScene {
+    return WeatherAnimations.keys.firstWhereOrNull((k) =>
+            (WeatherAnimations[k]?['codes'] as List<int>? ?? [].cast<int>())
+                .contains(weatherCode)) ??
+        WeatherScene.weatherEvery;
   }
 }
 
@@ -106,4 +78,31 @@ const WeatherCodes = {
   95: 'Thunderstorm',
   96: 'Thunderstorm with light hail',
   99: 'Thunderstorm with heavy hail',
+};
+
+const WeatherAnimations = {
+  WeatherScene.scorchingSun: {
+    'codes': [0, 1],
+    'svg': iconClear,
+  },
+  WeatherScene.sunset: {
+    'codes': [2, 45, 48],
+    'svg': iconCloudy,
+  },
+  WeatherScene.rainyOvercast: {
+    'codes': [3, 51, 61, 63, 80, 81],
+    'svg': iconRainy,
+  },
+  WeatherScene.stormy: {
+    'codes': [53, 55, 65, 82, 95, 96, 99],
+    'svg': iconStorm,
+  },
+  WeatherScene.showerSleet: {
+    'codes': [56, 57, 66, 67],
+    'svg': iconSnowy,
+  },
+  WeatherScene.snowfall: {
+    'codes': [71, 73, 75, 77, 85, 86],
+    'svg': iconSnowy,
+  },
 };

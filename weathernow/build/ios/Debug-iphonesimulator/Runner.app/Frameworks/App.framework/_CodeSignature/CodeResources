@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		QhD7uhXDxjrm/36pjThIqFoDYdk=
+		mujuLjE49W7wIrGpgBRzS1CBX1c=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		sVRnkRis1o/0LIA94AsxRSvNle0=
+		i0rBd6yp4QGJ+qicCAnyEioavmc=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,7 +22,31 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		dH/70MBTLjihOaDitwcoEEBPg6k=
+		pveCNR/8ehmj15qHUi0R3go8lcY=
+		</data>
+		<key>flutter_assets/assets/animations/clear.svg</key>
+		<data>
+		+BwosM66zAdcDGnbYUNZeUU9f9M=
+		</data>
+		<key>flutter_assets/assets/animations/clear_night.svg</key>
+		<data>
+		HAfCQKMNLGJscxuWGxFJbpsq0HU=
+		</data>
+		<key>flutter_assets/assets/animations/cloudy.svg</key>
+		<data>
+		3aTdciSZMF5S+7CFaE39YOemfN0=
+		</data>
+		<key>flutter_assets/assets/animations/rainy.svg</key>
+		<data>
+		9FcHHobt8D+LoFzhqmPIIMbrRrI=
+		</data>
+		<key>flutter_assets/assets/animations/snowy.svg</key>
+		<data>
+		5VZRi6JMviInBDgIZ5tg8Vha7jA=
+		</data>
+		<key>flutter_assets/assets/animations/storm.svg</key>
+		<data>
+		+wiKcE0hheFM9fmrFSP1Rt6yWLc=
 		</data>
 		<key>flutter_assets/assets/images/2.0x/flutter_logo.png</key>
 		<data>
@@ -31,6 +55,10 @@
 		<key>flutter_assets/assets/images/3.0x/flutter_logo.png</key>
 		<data>
 		URIqJlAOM/qejwuIf5bwKjMOSaM=
+		</data>
+		<key>flutter_assets/assets/images/appIcon.svg</key>
+		<data>
+		dw2wvxYuKyMJ1rX9yfO06NBksiA=
 		</data>
 		<key>flutter_assets/assets/images/flutter_logo.png</key>
 		<data>
@@ -46,7 +74,11 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		49uPWigE7LozZnfsj0K17APwG58=
+		uIjZ3SyRlMYocNR+SKM6zWNaqjk=
+		</data>
+		<key>flutter_assets/packages/flutter_map/lib/assets/flutter_map_logo.png</key>
+		<data>
+		kUCCgXRmQ7Ql3lxXrdQuoudq1L8=
 		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
@@ -63,14 +95,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jNG59Bdtp0tuyFS/LdRX68eBFfWxhym9QFtj6lk4Ml8=
+			HaQA8qXnr01bN57ZFiDiwrNo/hxsifUFwxydtPC0ipo=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ETT8vKwwEUvILGMxVI1RYi288eG0plCC+3keyp/g5mw=
+			CTJdJWNxJuSCiubcEhsjs+Z92NiC6Agjr7w3rZZreoY=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -84,7 +116,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MozwfblPnSa4P2fSOVFpvhUKzttDHo9i3KBLa/F3AS0=
+			v3W9LzYgsy55eMPu57v5vzBsU3VkDJJYJ/h+K+vs924=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/clear.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Zp2B2BbdCDoNnjCoD2KrdbwsmM91fzfjJugG5ndRz7Y=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/clear_night.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rrToUd0AToOdDob9KkD7HjC5fpFhx7FU33cuNuAgKCw=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/cloudy.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G72efwgIH/reeyIKFozw0ZV4AJGVu1OntPMeN3qB8pM=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/rainy.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KmlT8zxFnOlvRGyt5ErJB99+/lR8qlNnObtdwQs0AmI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/snowy.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AwGMqu8GG5mKCiKaKwAdKoUKuQPKSZRSmHKTKhSjGJE=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animations/storm.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nBaDzYj6o3DPgi9z7qZsFAmv0cJlefpw7u1XcCcZGd8=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/2.0x/flutter_logo.png</key>
@@ -99,6 +173,13 @@
 			<key>hash2</key>
 			<data>
 			427KBrJEB0i9/B5Hgf4RkNsQ2zG6TkhczkEaDw7mYb8=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/appIcon.svg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hFrlCNWp/B584WAshEnAcgOZXOFuQ+Tn7jeTYIv4JfE=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/flutter_logo.png</key>
@@ -126,7 +207,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qMesNWvrXbu8yzbLpVlJLpc47HgrYyjaMogBv4AynZE=
+			vHYqREXybsJuyayeiAdBQ3qyHyrnilrteZBP7jstRX8=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/flutter_map/lib/assets/flutter_map_logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YFGuQvtQWTGoM+WPkgmp+WZppNDks/BvbYLN4SoOBAE=
 			</data>
 		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>

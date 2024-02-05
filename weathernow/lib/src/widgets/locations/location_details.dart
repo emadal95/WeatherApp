@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:weathernow/src/data/settings/settings_controller.dart';
 import 'package:weathernow/src/data/weather_service/weather_controller.dart';
 import 'package:weathernow/src/models/weather_data.dart';
+import 'package:weathernow/src/models/labeled_location_data.dart';
 import 'package:weathernow/src/utils/utility.dart';
 import 'package:weathernow/src/widgets/locations/locations_list.dart';
 import 'package:weathernow/src/widgets/weather/weather_animation_background.dart';
@@ -11,7 +12,7 @@ import 'package:weathernow/src/widgets/weather/weather_display_card.dart';
 
 class LocationDetails extends StatefulWidget {
   static const routeName = '/';
-  LocationData? location;
+  LabeledLocationData? location;
   SettingsController settingsController;
 
   LocationDetails({
@@ -29,7 +30,8 @@ class _LocationDetailsState extends State<LocationDetails> {
   Future? dataFuture;
 
   Future loadData() async {
-    LocationData? loc = widget.location ?? await Utils.getDeviceLocation();
+    LabeledLocationData? loc =
+        widget.location ?? await Utils.getDeviceLocation();
 
     if (loc != null) {
       await provider!.loadWeather(

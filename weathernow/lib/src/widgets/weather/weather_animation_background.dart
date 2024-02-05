@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_animation/weather_animation.dart';
+import 'package:weathernow/src/utils/constants.dart';
 
 class WeatherAnimation extends StatelessWidget {
   WeatherScene? scene;
@@ -8,7 +9,7 @@ class WeatherAnimation extends StatelessWidget {
   Widget baseContainer({Widget? child}) {
     return Container(
       alignment: Alignment.center,
-      color: Colors.blueGrey.shade200,
+      color: animationBackgrounColor,
       child: child,
     );
   }

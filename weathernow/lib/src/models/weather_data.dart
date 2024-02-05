@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:location/location.dart';
 import 'package:weathernow/src/models/current_weather.dart';
 import 'package:weathernow/src/models/forecast.dart';
+import 'package:weathernow/src/models/labeled_location_data.dart';
 
 class WeatherData with EquatableMixin {
-  final LocationData location;
+  final LabeledLocationData location;
   final CurrentWeather currentWeather;
   final Forecast forecast;
 
@@ -19,7 +19,7 @@ class WeatherData with EquatableMixin {
 
   static WeatherData? parse(Map<String, dynamic> data) {
     return WeatherData(
-      location: LocationData.fromMap(data),
+      location: LabeledLocationData.fromMap(data),
       currentWeather: CurrentWeather.parse(
         data['current'] as Map<String, dynamic>,
         data['current_units'] as Map<String, dynamic>,
