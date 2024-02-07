@@ -21,11 +21,6 @@ Flutter Development Exercise - Emanuele D'Alessandro
     - Display the current weather conditions for the selected location.
     - Include details such as temperature, humidity, wind speed, and conditions. - Show an icon or image reflecting the current weather state.
 
-4. *Testing*:
-
-    - Write unit tests for critical functions and widgets.
-    - Ensure proper functionality of weather data retrieval, component rendering, and error  handling.
-
 **Bonus**:
 
 1. *User Preferences*:
@@ -39,16 +34,3 @@ Flutter Development Exercise - Emanuele D'Alessandro
     - Provide an hourly forecast for the next 24 hours.
     - Display temperature, conditions, and any relevant information in an organized manner. - Present a 5-day weather forecast with high and low temperatures, conditions, and an icon  representing each day.
 
-**Submission**:
-
-    - Share your code repository (GitHub, GitLab, Bitbucket, etc.)
-    - Please include the apk in your repository
-    - Include clear instructions on how to run the app and the tests.
-
-**Evaluation Criteria**:
-
-    - Code organization and structure.
-    - Proper use of Flutter widgets and state management.
-    - Implementation of core features.
-    - Testing coverage and effectiveness.
-    - Bonus points for additional features and clean, maintainable code.
